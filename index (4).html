@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P&M Administración Inmobiliaria | Temuco, Chile</title>
+<meta name="description" content="Administración 360° de condominios en Temuco. Transparencia financiera, cumplimiento Ley 21.442, gestión profesional. Paulina Maldonado, Ingeniera en Administración.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1a1714;
+    --medium: #3d3530;
+    --warm-gray: #8c847c;
+    --light-bg: #f0ece6;
+    --lighter-bg: #f7f4f0;
+    --white: #fdfcfa;
+    --accent: #c9a96e;
+    --accent-dark: #a07840;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(26, 23, 20, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(253,252,250,0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  #inicio {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(to bottom, rgba(26,23,20,0.5) 0%, rgba(26,23,20,0.3) 50%, rgba(26,23,20,0.7) 100%),
+      url('héroe-temuco.jpeg') center/cover no-repeat;
+    /* REEMPLAZA: sube una foto aérea de Temuco con el volcán */
+  }
+
+  .hero-bg-fallback {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1714 0%, #3d3530 40%, #1a1714 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    max-width: 850px;
+    padding: 0 2rem;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1.2s 0.2s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 1.2s 0.3s ease both;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(253,252,250,0.85);
+    max-width: 620px;
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 1.2s 0.4s ease both;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s;
+    animation: fadeUp 1.2s 0.5s ease both;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    color: var(--dark);
+  }
+
+  .btn-dark {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.4s;
+  }
+
+  .btn-dark:hover { background: var(--medium); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(253,252,250,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    z-index: 2;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* SECTIONS GENERAL */
+  section { padding: 6rem 4rem; }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  /* INTRO / PROPUESTA */
+  #propuesta {
+    background: var(--lighter-bg);
+    padding: 5rem 4rem;
+  }
+
+  .propuesta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .propuesta-title-col {
+    padding-right: 3rem;
+  }
+
+  .propuesta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--dark);
+  }
+
+  .propuesta-col {
+    padding: 0 2rem;
+    border-left: 1px solid rgba(140,132,124,0.3);
+  }
+
+  .propuesta-col p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--medium);
+  }
+
+  .propuesta-col a {
+    color: var(--accent-dark);
+    font-weight: 600;
+  }
+
+  /* ACERCA DE */
+  #acerca {
+    background: var(--white);
+    padding: 6rem 4rem;
+  }
+
+  .acerca-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .acerca-img {
+    position: relative;
+  }
+
+  .acerca-img img,
+  .acerca-img .img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-placeholder {
+    background: var(--light-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--warm-gray);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    gap: 0.5rem;
+  }
+
+  .img-placeholder::before {
+    content: '▲';
+    font-size: 2rem;
+    color: var(--accent);
+  }
+
+  .acerca-content .section-label { margin-bottom: 1.5rem; }
+
+  .acerca-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .acerca-text {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--medium);
+    margin-bottom: 1.5rem;
+  }
+
+  /* CERTIFICACIONES */
+  #certificaciones {
+    background: var(--lighter-bg);
+    padding: 6rem 4rem;
+  }
+
+  .cert-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+  }
+
+  .cert-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cert-sub {
+    font-size: 1.05rem;
+    color: var(--warm-gray);
+    line-height: 1.7;
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cert-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-top: 3px solid var(--accent);
+  }
+
+  .cert-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--dark);
+  }
+
+  .cert-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--medium);
+  }
+
+  /* FOTO DIPLOMAS */
+  #diplomas {
+    padding: 0;
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+  }
+
+  #diplomas img,
+  #diplomas .img-placeholder-wide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-placeholder-wide {
+    background: var(--light-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--warm-gray);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .img-placeholder-wide::before {
+    content: '▲';
+    font-size: 2rem;
+    color: var(--accent);
+  }
+
+  /* SERVICIOS */
+  #servicios {
+    background: var(--dark);
+    color: var(--white);
+    padding: 6rem 4rem;
+  }
+
+  .servicios-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto 4rem;
+    align-items: start;
+  }
+
+  .servicios-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    grid-column: 1;
+  }
+
+  .servicios-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(253,252,250,0.7);
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .servicio-item {
+    background: var(--dark);
+    padding: 2.5rem;
+    transition: background 0.3s;
+  }
+
+  .servicio-item:hover { background: var(--medium); }
+
+  .servicio-num {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .servicio-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--white);
+  }
+
+  .servicio-item p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(253,252,250,0.65);
+  }
+
+  /* LEY 21442 */
+  #ley {
+    background: var(--light-bg);
+    padding: 6rem 4rem;
+  }
+
+  .ley-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .ley-content .section-label { margin-bottom: 1.5rem; }
+
+  .ley-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .ley-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ley-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--medium);
+  }
+
+  .ley-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* CTA */
+  #contacto {
+    background: var(--lighter-bg);
+    padding: 6rem 4rem;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .cta-img img,
+  .cta-img .img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cta-content .section-label { margin-bottom: 1.5rem; }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--medium);
+    margin-bottom: 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: var(--white);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    color: rgba(253,252,250,0.5);
+    line-height: 1.6;
+    max-width: 300px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col p, .footer-col a {
+    font-size: 0.95rem;
+    color: rgba(253,252,250,0.7);
+    line-height: 1.8;
+    text-decoration: none;
+    display: block;
+  }
+
+  .footer-col a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    background: var(--dark);
+    text-align: center;
+    padding: 1.5rem 4rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.8rem;
+    color: rgba(253,252,250,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+
+    .propuesta-grid,
+    .acerca-grid,
+    .cert-grid,
+    .servicios-header,
+    .ley-grid,
+    .cta-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .propuesta-col { border-left: none; border-top: 1px solid rgba(140,132,124,0.3); padding: 2rem 0 0; }
+    .servicios-grid { grid-template-columns: 1fr; }
+    .servicios-title { grid-column: 1; }
+
+    footer { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    #diplomas { height: 40vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav>
+  <a href="#inicio" class="nav-logo">P&M Administración Inmobiliaria</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#ley">Ley 21.442</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Temuco, Chile · Ley N° 21.442</p>
+    <h1 class="hero-title">Administración 360°,<br>Transparencia y Eficiencia<br>en cada detalle.</h1>
+    <p class="hero-sub">Soluciones administrativas integrales para condominios que exigen transparencia financiera, mantenimiento riguroso y cumplimiento legal sin complicaciones.</p>
+    <a href="#contacto" class="btn-primary">Solicitar diagnóstico</a>
+  </div>
+  <div class="scroll-hint">↓ Descubrir</div>
+</section>
+
+<!-- PROPUESTA DE VALOR -->
+<section id="propuesta">
+  <div class="propuesta-grid">
+    <div class="propuesta-title-col">
+      <p class="section-label">Enfoque</p>
+      <h2 class="propuesta-title">Gestión de<br>Excelencia</h2>
+    </div>
+    <div class="propuesta-col">
+      <p>Transformo la administración de condominios mediante procesos de auditoría continua y control de gestión. Mi prioridad es eliminar la incertidumbre financiera y asegurar que cada recurso de la comunidad sea utilizado con máxima eficiencia.</p>
+    </div>
+    <div class="propuesta-col">
+      <p>Mi metodología aplica principios de ingeniería administrativa para optimizar el gasto común. No solo mantengo edificios; gestiono activos inmobiliarios enfocada en la reducción de costos y el aumento de la plusvalía a largo plazo. <a href="#acerca">Conocer más →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ACERCA DE MI -->
+<section id="acerca">
+  <div class="acerca-grid">
+    <div class="acerca-img">
+      <!-- REEMPLAZA: sube foto de Paulina (la de traje azul marino con volcán) -->
+      <img src="paulina-perfil.jpeg" alt="Paulina Maldonado" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none">Foto de Paulina<br><small>Subir: paulina-perfil.jpg</small></div>
+    </div>
+    <div class="acerca-content">
+      <p class="section-label">Acerca de Mi</p>
+      <h2 class="acerca-name">Paulina Maldonado</h2>
+      <p class="acerca-text">Soy <strong>Paulina Maldonado</strong>, y entiendo que la administración de un condominio es mucho más que gestionar pagos; es proteger el patrimonio y la calidad de vida de cientos de familias.</p>
+      <p class="acerca-text">Mi enfoque combina la <strong>rigurosidad de la ingeniería</strong> con una especialización profunda en la <strong>Ley N° 21.442</strong>. Me dedico a transformar comunidades mediante una gestión basada en la <strong>transparencia absoluta</strong> y la eficiencia operativa. No solo administro recursos, sino que implemento procesos que aseguran el cumplimiento legal y la tranquilidad de los copropietarios.</p>
+      <p class="acerca-text">Especialista en Gestión de Copropiedad Inmobiliaria con una sólida base en <strong>Ingeniería en Administración</strong>. Cuento con certificaciones avanzadas en Finanzas, Legislación Laboral y Auditoría.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section id="certificaciones">
+  <div class="cert-header">
+    <p class="section-label">Respaldo Profesional</p>
+    <h2 class="cert-title">Certificaciones y Especialización</h2>
+    <p class="cert-sub">Diplomada en Gestión de Condominios en Chile y Comité de Administración, con certificación destacada en Administración de Edificios y Condominios bajo la Ley N° 21.442.</p>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <h3>Ley N° 21.442 de Copropiedad</h3>
+      <p>Registrada y capacitada en la Nueva Ley de Copropiedad Inmobiliaria, con dominio experto en planes de emergencia, seguros y normativa de seguridad.</p>
+    </div>
+    <div class="cert-card">
+      <h3>Finanzas y Contabilidad</h3>
+      <p>Conciliación bancaria exacta y transparencia total en el cobro de gastos comunes. Uso de tecnología para reportes en tiempo real y acceso rápido a la información.</p>
+    </div>
+    <div class="cert-card">
+      <h3>Legislación Laboral y Remuneraciones</h3>
+      <p>Garantizo el pago correcto de leyes sociales y Previred para evitar multas de la Inspección del Trabajo, protegiendo a la comunidad de contingencias legales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO DIPLOMAS (imagen wide) -->
+<section id="diplomas" style="padding:0">
+  <!-- REEMPLAZA: sube la foto de Paulina con los diplomas en la pared -->
+  <img src="paulina-diplomas.png" alt="Paulina Maldonado con sus certificaciones" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <div class="img-placeholder-wide" style="display:none">Foto con diplomas en la pared — Subir: paulina-diplomas.jpg</div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="servicios-header">
+    <h2 class="servicios-title">Nuestros<br>Servicios</h2>
+    <div class="servicios-desc" style="grid-column: 2">
+      <p>Desde la investigación profunda hasta la ejecución refinada, ofrecemos soluciones que combinan rigor técnico con una visión estratégica orientada al largo plazo.</p>
+    </div>
+    <div class="servicios-desc" style="grid-column: 3">
+      <p>Privilegio una comunicación directa y resolutiva. Mi gestión combina la supervisión técnica constante en terreno con una rendición de cuentas clara.</p>
+    </div>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-item">
+      <p class="servicio-num">01</p>
+      <h3>Administración Financiera</h3>
+      <p>Gestión de gastos comunes, conciliación bancaria, presupuestos anuales y rendición de cuentas transparente a copropietarios.</p>
+    </div>
+    <div class="servicio-item">
+      <p class="servicio-num">02</p>
+      <h3>Cumplimiento Ley 21.442</h3>
+      <p>Implementación y supervisión de todos los requisitos legales de la Nueva Ley de Copropiedad Inmobiliaria, asambleas y reglamentos.</p>
+    </div>
+    <div class="servicio-item">
+      <p class="servicio-num">03</p>
+      <h3>Gestión de Personal y Remuneraciones</h3>
+      <p>Administración de conserjes y trabajadores, liquidaciones de sueldo, leyes sociales y cumplimiento con la Inspección del Trabajo.</p>
+    </div>
+    <div class="servicio-item">
+      <p class="servicio-num">04</p>
+      <h3>Mantenimiento y Seguridad</h3>
+      <p>Supervisión de mantenciones preventivas, planes de emergencia, seguros del edificio y normativa de seguridad vigente.</p>
+    </div>
+    <div class="servicio-item">
+      <p class="servicio-num">05</p>
+      <h3>Auditoría y Control de Gestión</h3>
+      <p>Procesos de auditoría continua para eliminar la incertidumbre financiera y asegurar que cada recurso sea utilizado con eficiencia máxima.</p>
+    </div>
+    <div class="servicio-item">
+      <p class="servicio-num">06</p>
+      <h3>Reportería en Tiempo Real</h3>
+      <p>Tecnología para reportes financieros y operativos accesibles en tiempo real, garantizando la transparencia que su comunidad merece.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEY 21442 -->
+<section id="ley">
+  <div class="ley-grid">
+    <div class="ley-content">
+      <p class="section-label">Marco Legal</p>
+      <h2 class="ley-title">Experta en la<br>Ley N° 21.442 de<br>Copropiedad Inmobiliaria</h2>
+      <ul class="ley-list">
+        <li>Administradora certificada bajo la nueva normativa vigente desde 2022</li>
+        <li>Dominio completo en constitución y funcionamiento de asambleas</li>
+        <li>Gestión de fondos de reserva según los nuevos estándares legales</li>
+        <li>Planes de emergencia, seguros obligatorios y normativa de seguridad</li>
+        <li>Reglamentos de copropiedad actualizados a la ley vigente</li>
+        <li>Protección legal a la comunidad ante contingencias laborales y tributarias</li>
+      </ul>
+    </div>
+    <div>
+      <!-- REEMPLAZA: puedes poner una imagen de un edificio o condominio -->
+      <img src="condominio.jpeg" alt="Condominio administrado" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none;width:100%;aspect-ratio:3/4">Foto de condominio<br><small>Subir: condominio.jpg</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CONTACTO -->
+<section id="contacto">
+  <div class="cta-grid">
+    <div class="cta-img">
+      <!-- REEMPLAZA: imagen de bolígrafo y papel o escritorio -->
+      <img src="contacto.png" alt="Solicite diagnóstico" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none">Foto de contacto<br><small>Subir: contacto.jpg</small></div>
+    </div>
+    <div class="cta-content">
+      <p class="section-label">Primer Paso</p>
+      <h2 class="cta-title">Solicite un Diagnóstico<br>para su Comunidad</h2>
+      <p class="cta-text">Analicemos juntos la situación financiera y normativa de su condominio bajo la Ley 21.442. Una gestión transparente comienza con una primera reunión.</p>
+      <a href="mailto:administracion.asesoria@gmail.com" class="btn-dark">Reservar ahora →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">P&M Gestión Inmobiliaria SPA</div>
+    <p class="footer-tagline">Administración profesional de condominios con transparencia, rigor y cumplimiento legal en Temuco, Chile.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Ubicación</h4>
+    <p>Langdon uno 700,<br>Temuco, Chile.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Contacto</h4>
+    <a href="mailto:administracion.asesoria@gmail.com">administracion.asesoria@gmail.com</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  © 2026 P&M Gestión Inmobiliaria SPA · Todos los derechos reservados
+</div>
+
+</body>
+</html>
